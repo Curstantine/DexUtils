@@ -1,20 +1,20 @@
-import {LanguageCodes, LocaleTitles} from "~/lang";
-import {ContentRating, Demographic, Status} from "./enum";
-import {MangaLinks} from "./extra";
+import { DexLocales, DexLocalizedString } from "../lang";
+import { ContentRating, Demographic, Status } from "./enum";
+import { MangaLinks } from "./extra";
 
 /**
  * Body needed to create a new title.
  */
 export interface MangaCreationBody {
-	title: LocaleTitles;
-	altTitles?: LocaleTitles[];
-	description?: LocaleTitles[];
+	title: DexLocalizedString;
+	altTitles?: DexLocalizedString[];
+	description?: DexLocalizedString[];
 	/// Array of UUIDs
 	authors?: string[];
 	/// Array of UUIDs
 	artists?: string[];
 	links?: MangaLinks;
-	originalLanguage: LanguageCodes;
+	originalLanguage: DexLocales;
 	lastVolume?: string;
 	lastChapter?: string;
 	publicationDemographic?: Demographic;
@@ -33,15 +33,15 @@ export interface MangaCreationBody {
  * Body needed to update a title.
  */
 export interface MangaUpdateBody {
-	title?: LocaleTitles;
-	altTitles?: LocaleTitles[];
-	description?: LocaleTitles[];
+	title?: DexLocalizedString;
+	altTitles?: DexLocalizedString[];
+	description?: DexLocalizedString[];
 	/// Array of UUIDs
 	authors?: string[];
 	/// Array of UUIDs
 	artists?: string[];
 	links?: MangaLinks;
-	originalLanguage?: LanguageCodes;
+	originalLanguage?: DexLocales;
 	lastVolume?: string;
 	lastChapter?: string;
 	publicationDemographic?: Demographic;

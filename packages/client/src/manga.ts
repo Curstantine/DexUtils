@@ -1,10 +1,9 @@
-import { request } from "undici";
 import { MangaCollection, MangaEntity, MangaQueryParameters } from "@dexutils/typings";
 import { MANGADEX_API_URL } from "./constants";
 
 export async function getMangaByUUID(uuid: string): Promise<MangaEntity> {
-	const { body } = await request(`${MANGADEX_API_URL}/manga/${uuid}`);
-	return await body.json();
+	const request = await fetch(`${MANGADEX_API_URL}/manga/${uuid}`);
+	return (await request.json()) as MangaEntity;
 }
 
 export async function queryManga(query: MangaQueryParameters): Promise<MangaCollection> {
@@ -13,6 +12,6 @@ export async function queryManga(query: MangaQueryParameters): Promise<MangaColl
 		url.searchParams.append(key, value);
 	});
 
-	const { body } = await request(url, { method: "GET" });
-	return await body.json();
+	const request = await fetch(url, { method: "GET" });
+	return (await request.json()) as MangaCollection;
 }

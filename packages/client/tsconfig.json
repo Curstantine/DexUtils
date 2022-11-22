@@ -2,13 +2,22 @@
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"outDir": "./dist/",
+		"noEmit": false,
+		"declaration": true,
+		"emitDeclarationOnly": true,
 		"paths": {
 			"~/*": [
 				"src/*"
 			]
-		}
+		},
+		"lib": [
+			"dom"
+		]
 	},
 	"include": [
 		"./**/*.ts"
+	],
+	"exclude": [
+		"./**/*.test.ts"
 	]
 }
