@@ -1,4 +1,4 @@
-import {LanguageCodes} from "./lang";
+import {DexLocales} from "./lang";
 import {Collection, Entity, Entry, Sort} from "./common";
 import {RelationshipTypes} from "./relationship";
 
@@ -36,7 +36,7 @@ interface ChapterAttributes {
 	volume: string;
 	chapter: string;
 	pages: number;
-	translatedLanguage: LanguageCodes;
+	translatedLanguage: DexLocales;
 	/// UUID
 	uploader: string;
 	externalUrl: string;

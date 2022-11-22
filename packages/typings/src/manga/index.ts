@@ -1,11 +1,20 @@
-import {BaseResponse, Collection, Entity, Entry} from "../common";
-import {RelationshipTypes} from "../relationship";
-import {ChapterCollection} from "../chapter";
-import {MangaRelated, MangaTagGroups} from "./enum";
-import {MangaAttributes, MangaCreationDraftAttributes, MangaUpdateDraftAttributes,} from "./attributes";
-import {MangaAggregateData} from "./extra";
-import {Tag} from "../tag";
+import { BaseResponse, Collection, Entity, Entry } from "../common";
+import { RelationshipTypes } from "../relationship";
+import { ChapterCollection } from "../chapter";
+import { MangaRelated, MangaTagGroups } from "./enum";
+import {
+	MangaAttributes,
+	MangaCreationDraftAttributes,
+	MangaUpdateDraftAttributes,
+} from "./attributes";
+import { MangaAggregateData } from "./extra";
+import { Tag } from "../tag";
 
+export * from "./attributes";
+export * from "./body";
+export * from "./enum";
+export * from "./extra";
+export * from "./parameters";
 /**
  * Manga Entry.
  *

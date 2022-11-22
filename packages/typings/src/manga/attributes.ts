@@ -1,16 +1,16 @@
 import { State } from "../common";
-import { LanguageCodes, LocaleTitles } from "../lang";
+import { DexLocales, DexLocalizedString } from "../lang";
 import { Tag } from "../tag";
 import { ContentRating, Demographic, Status } from "./enum";
 import { MangaLinks } from "./extra";
 
 export interface MangaAttributes {
-	title: LocaleTitles;
-	altTitles: LocaleTitles[];
-	description: LocaleTitles;
+	title: DexLocalizedString;
+	altTitles: DexLocalizedString[];
+	description: DexLocalizedString;
 	isLocked: boolean;
 	links: MangaLinks;
-	originalLanguage: LanguageCodes;
+	originalLanguage: DexLocales;
 	lastVolume: string;
 	lastChapter: string;
 	publicationDemographic: Demographic;
@@ -23,7 +23,7 @@ export interface MangaAttributes {
 	version: number;
 	createdAt: Date;
 	updatedAt: Date;
-	availableTranslatedLanguages: LanguageCodes[];
+	availableTranslatedLanguages: DexLocales[];
 }
 
 /**

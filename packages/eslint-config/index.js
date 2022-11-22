@@ -9,7 +9,7 @@ module.exports = {
 		{
 			files: ["*.ts"],
 			parser: "@typescript-eslint/parser",
-			extends: ["plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"],
+			extends: ["prettier", "plugin:@typescript-eslint/recommended"],
 			plugins: ["@typescript-eslint"],
 		},
 		{

@@ -1,6 +1,6 @@
 import { ChapterSort } from "../chapter";
 import { Conditional, ConditionalBoolean } from "../common";
-import { LanguageCodes } from "../lang";
+import { DexLocales } from "../lang";
 import { RelationshipTypes } from "../relationship";
 import { ContentRating, Demographic, Status } from "./enum";
 import { MangaSort } from "./extra";
@@ -24,9 +24,9 @@ export interface MangaQueryParameters {
 	"excludedTags[]"?: string[];
 	excludedTagsMode?: Conditional;
 	"status[]"?: Status[];
-	"originalLanguage[]"?: LanguageCodes[];
-	"excludedOriginalLanguage[]"?: LanguageCodes[];
-	"availableTranslatedLanguage[]"?: LanguageCodes[];
+	"originalLanguage[]"?: DexLocales[];
+	"excludedOriginalLanguage[]"?: DexLocales[];
+	"availableTranslatedLanguage[]"?: DexLocales[];
 	"publicationDemographic[]"?: Demographic[];
 	/// Array of UUIDs
 	"ids[]"?: string[];
@@ -47,9 +47,9 @@ export interface MangaFeedParameters {
 	limit?: number;
 	/// >=0
 	offset?: number;
-	"translatedLanguage[]"?: LanguageCodes[];
-	"originalLanguage[]"?: LanguageCodes[];
-	"excludedOriginalLanguage[]"?: LanguageCodes[];
+	"translatedLanguage[]"?: DexLocales[];
+	"originalLanguage[]"?: DexLocales[];
+	"excludedOriginalLanguage[]"?: DexLocales[];
 	"contentRating[]"?: ContentRating[];
 	/// Array of UUIDs
 	"excludedGroups[]"?: string[];

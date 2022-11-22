@@ -1,10 +1,10 @@
 import { Entry } from "./common";
 import { RelationshipTypes } from "./relationship";
-import { LocaleTitles } from "./lang";
+import { DexLocalizedString } from "./lang";
 
 export interface TagAttributes<Group> {
-	name: LocaleTitles;
-	description: LocaleTitles[];
+	name: DexLocalizedString;
+	description: DexLocalizedString[];
 	group: Group;
 	version: number;
 }

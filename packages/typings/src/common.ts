@@ -1,13 +1,13 @@
 import { Relationship, RelationshipTypes } from "./relationship";
 
 export enum ResponseResult {
-	ok,
-	error,
+	ok = "ok",
+	error = "error",
 }
 
 export enum ResponseType {
-	entity,
-	collection,
+	entity = "entity",
+	collection = "collection",
 }
 
 export enum Conditional {
@@ -16,24 +16,24 @@ export enum Conditional {
 }
 
 export enum ConditionalBoolean {
-	true,
-	false,
+	true = "true",
+	false = "false",
 }
 
 export enum Sort {
-	asc,
-	desc,
+	asc = "asc",
+	desc = "desc",
 }
 
 export enum State {
-	published,
-	draft,
-	rejected,
+	published = "published",
+	draft = "draft",
+	rejected = "rejected",
 }
 
 export enum CustomListVisibility {
-	public,
-	private,
+	public = "public",
+	private = "private",
 }
 
 /**
@@ -68,13 +68,13 @@ export interface BaseResponse {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface Entity<Data extends Entry<any, any, any>> extends BaseResponse {
-	type: ResponseType.entity;
+	response: ResponseType.entity;
 	data: Data;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface Collection<Data extends Entry<any, any, any>> extends BaseResponse {
-	type: ResponseType.collection;
+	response: ResponseType.collection;
 	data: Array<Data>;
 	limit: number;
 	offset: number;
