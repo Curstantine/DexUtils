@@ -11,3 +11,7 @@ body {
   @apply bg-gbh-1 text-gbh-3;
 }
 
+::selection {
+  color: currentColor;
+  @apply bg-gbh-2;
+}

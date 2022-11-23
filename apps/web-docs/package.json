@@ -1,5 +1,5 @@
 {
-  "name": "sample-client",
+  "name": "@dexutils/web-docs",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@dexutils/client": "*",
-    "@dexutils/typings": "*"
+    "@dexutils/typings": "*",
+    "svelte-spa-router": "^3.3.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.1.0",

@@ -759,6 +759,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@dexutils/web-docs@workspace:apps/web-docs":
+  version: 0.0.0-use.local
+  resolution: "@dexutils/web-docs@workspace:apps/web-docs"
+  dependencies:
+    "@dexutils/client": "*"
+    "@dexutils/typings": "*"
+    "@sveltejs/vite-plugin-svelte": ^1.1.0
+    "@tsconfig/svelte": ^3.0.0
+    postcss: ^8.4.19
+    svelte: ^3.52.0
+    svelte-check: ^2.9.2
+    svelte-preprocess: ^4.10.7
+    svelte-spa-router: ^3.3.0
+    tailwindcss: ^3.2.4
+    tslib: ^2.4.0
+    typescript: ^4.6.4
+    vite: ^3.2.3
+  languageName: unknown
+  linkType: soft
+
 "@esbuild/android-arm@npm:0.15.15":
   version: 0.15.15
   resolution: "@esbuild/android-arm@npm:0.15.15"
@@ -5908,6 +5928,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regexparam@npm:2.0.1":
+  version: 2.0.1
+  resolution: "regexparam@npm:2.0.1"
+  checksum: 797998e96c995c200ebd4a7d5e734381b96d3979b4b6672ec65ed5ca9210b8a5149ad73109ec32115779674b526088704c2564e9fa07f8b747743beadc424803
+  languageName: node
+  linkType: hard
+
 "regexpp@npm:^3.2.0":
   version: 3.2.0
   resolution: "regexpp@npm:3.2.0"
@@ -6117,24 +6144,6 @@ __metadata:
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
   languageName: node
   linkType: hard
-
-"sample-client@workspace:apps/sample-client":
-  version: 0.0.0-use.local
-  resolution: "sample-client@workspace:apps/sample-client"
-  dependencies:
-    "@dexutils/client": "*"
-    "@sveltejs/vite-plugin-svelte": ^1.1.0
-    "@tsconfig/svelte": ^3.0.0
-    postcss: ^8.4.19
-    svelte: ^3.52.0
-    svelte-check: ^2.9.2
-    svelte-preprocess: ^4.10.7
-    tailwindcss: ^3.2.4
-    tslib: ^2.4.0
-    typescript: ^4.6.4
-    vite: ^3.2.3
-  languageName: unknown
-  linkType: soft
 
 "sander@npm:^0.5.0":
   version: 0.5.1
@@ -6661,6 +6670,15 @@ __metadata:
     typescript:
       optional: true
   checksum: 51a0820c14bcc411ddf3b1cf4c772e73873626ed0b6c54dfca9e06bd6a6b22c9502436df3f1a4dab9eb3a404bba95002fd70cadea29a84fc36da3071309a8b91
+  languageName: node
+  linkType: hard
+
+"svelte-spa-router@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "svelte-spa-router@npm:3.3.0"
+  dependencies:
+    regexparam: 2.0.1
+  checksum: 3a2b628086bb79fd67b211b77c07f174f4b602ccd30c437fbf618a873de8c543ce941ea9c175bafbe989c4aa0182ae008e68cc577e0e4716cb6ab3afe8af307e
   languageName: node
   linkType: hard
 
