@@ -1,2 +1,2 @@
 export * from "./manga";
-export * from "./uuid";
+export * from "./utils";

@@ -4,7 +4,7 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "yarn run build:types && yarn run build:esm",
+		"build": "rm -rf dist && yarn run build:types && yarn run build:esm",
 		"build:esm": "esbuild src/index.ts --bundle --platform=node --target=es2021 --format=esm --outfile=dist/index.js",
 		"build:types": "tsc --emitDeclarationOnly --outDir dist",
 		"typecheck": "tsc",
