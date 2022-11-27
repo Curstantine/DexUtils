@@ -51,12 +51,16 @@ export interface DexDataBody<Attributes> {
 	id: UUID;
 	type: DexDataType;
 	attributes: Attributes;
-	relationships?: DexBasicRelationship[];
+	relationships?: DexBasicRelationship<DexDataType>[];
 }
 
-export interface DexBasicRelationship {
+export interface DexBasicRelationship<Type extends DexDataType> {
 	id: UUID;
-	type: string;
+	type: Type;
+}
+
+export interface DexCompleteRelationship<Type extends DexDataType, Attributes> extends DexBasicRelationship<Type> {
+	attributes: Attributes,
 }
 
 export interface DexBasicQueryParameters {

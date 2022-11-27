@@ -1,5 +1,12 @@
 import { createMangaQueryURL, createMangaURLByUUID, getMangaByUUID, queryManga } from "./manga";
-import { DexDataType, DexLocale, DexMangaOrder, DexOrderDirection, DexResponseType } from "@dexutils/typings";
+import {
+	type DexAuthorRelationship,
+	DexDataType,
+	DexLocale,
+	DexMangaOrder,
+	DexOrderDirection,
+	DexResponseType
+} from "@dexutils/typings";
 
 const DEFAULT_MANGA_UUID = "f9c33607-9180-4ba6-b85c-e4b5faee7192";
 const DEFAULT_INCLUDES = [DexDataType.Artist, DexDataType.Author];
@@ -24,14 +31,18 @@ describe("manga", () => {
 		expect(decodeURIComponent(oqm.search)).toBe("?title=Test&order[year]=desc")
 	});
 	it("should get a manga by uuid", async () => {
-		const manga = await getMangaByUUID({ uuid: DEFAULT_MANGA_UUID });
+		const manga = await getMangaByUUID({ uuid: DEFAULT_MANGA_UUID, includes: DEFAULT_INCLUDES });
+		const artists = manga.data.relationships.filter((r) => r.type === DexDataType.Artist) as DexAuthorRelationship[];
+		const authors = manga.data.relationships.filter((r) => r.type === DexDataType.Author) as DexAuthorRelationship[];
 
 		expect(manga.response).toBe(DexResponseType.Entity);
 		expect(manga.data.id).toBe(DEFAULT_MANGA_UUID);
 		expect(manga.data.attributes.title[DexLocale.English]).toBeDefined();
+		expect(artists[0].attributes).toBeDefined();
+		expect(authors[0].attributes).toBeDefined();
 	});
 	it("should query manga ids and handle sorting", async () => {
-		const manga = await queryManga({ title: "Test", order: DEFAULT_ORDER, limit: 5 });
+		const manga = await queryManga({ title: "Test",  limit: 5 , order: DEFAULT_ORDER, includes: DEFAULT_INCLUDES });
 		const first = manga.data[0];
 		const last = manga.data[manga.data.length - 1];
 
@@ -40,5 +51,10 @@ describe("manga", () => {
 		expect(manga.limit).toBe(5);
 		expect(manga.data.length).toBe(5);
 		expect(first.attributes.year).toBeGreaterThanOrEqual(last.attributes.year);
+
+		const artists = first.relationships.filter((r) => r.type === DexDataType.Artist) as DexAuthorRelationship[];
+		const authors = first.relationships.filter((r) => r.type === DexDataType.Author) as DexAuthorRelationship[];
+		expect(artists[0].attributes).toBeDefined();
+		expect(authors[0].attributes).toBeDefined();
 	});
 });

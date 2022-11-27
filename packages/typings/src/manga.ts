@@ -1,21 +1,27 @@
 import type { DexLocale, DexLocalizedString } from "./lang";
 import type {
 	DexBasicQueryParameters,
+	DexBasicRelationship,
+	DexCompleteRelationship,
 	DexCondition,
 	DexDataBody,
+	DexDataType,
+	DexOrderDirection,
 	DexResponseCollection,
 	DexResponseEntity,
 	UUID,
 } from "./common";
-import { DexOrderDirection } from "./common";
 
 export type DexMangaBody = DexDataBody<DexMangaAttributes>;
 export type DexMangaEntity = DexResponseEntity<DexMangaBody>;
 export type DexMangaCollection = DexResponseCollection<DexMangaBody>;
 
 export type DexMangaTagBody = DexDataBody<DexMangaTagAttributes>;
-export type DexTagEntity = DexResponseEntity<DexMangaTagBody>;
-export type DexTagCollection = DexResponseCollection<DexMangaTagBody>;
+
+export type DexMangaRelationship = DexCompleteRelationship<DexDataType.Manga, DexMangaAttributes>;
+export type DexBasicRelatedManga = DexBasicRelationship<DexDataType.Manga> & { related: DexMangaRelationType };
+export type DexCompleteRelatedManga = DexCompleteRelationship<DexDataType.Manga, DexMangaAttributes> &
+	DexBasicRelatedManga;
 
 export interface DexMangaAttributes {
 	title: DexLocalizedString;
@@ -118,6 +124,25 @@ export enum DexMangaOrder {
 	FollowedCount = "followedCount",
 	Relevance = "relevance",
 	Rating = "rating",
+}
+
+export enum DexMangaRelationType {
+	Monochrome = "monochrome",
+	MainStory = "main_story",
+	AdaptedFrom = "adapted_from",
+	BasedOn = "based_on",
+	Prequel = "prequel",
+	SideStory = "side_story",
+	Doujinshi = "doujinshi",
+	SameFranchise = "same_franchise",
+	SharedUniverse = "shared_universe",
+	Sequel = "sequel",
+	SpinOff = "spin_off",
+	AlternateStory = "alternate_story",
+	AlternateVersion = "alternate_version",
+	Preserialization = "preserialization",
+	Colored = "colored",
+	Serialization = "serialization",
 }
 
 export interface DexMangaQueryParameters extends DexBasicQueryParameters {
