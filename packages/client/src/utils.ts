@@ -3,8 +3,8 @@
  */
 export const encodeParams = (params: URLSearchParams, key: string, value: unknown) => {
 	if (Array.isArray(value)) {
-		if (key === "order") {
-			return params.set(`${key}[${value[0]}]`, value[1]);
+		if (!key.endsWith("[]") && value.length === 2) {
+			return params.set(`${key}[${value[0]}]`, encodeValue(value[1]));
 		}
 
 		const arrayedKey = key.endsWith("[]") ? key : `${key}[]`;
@@ -16,8 +16,7 @@ export const encodeParams = (params: URLSearchParams, key: string, value: unknow
 		return params.set(`${key}[${first}]`, encodeValue((value as Record<string, unknown>)[first]));
 	}
 
-	const encodedValue = encodeValue(value);
-	return params.set(key, encodedValue);
+	return params.set(key, encodeValue(value));
 }
 
 export const encodeValue = (value: unknown): string => {

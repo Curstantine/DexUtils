@@ -1,4 +1,10 @@
-import { createMangaQueryURL, createMangaURLByUUID, getMangaByUUID, queryManga } from "./manga";
+import {
+	createMangaAggregateURL,
+	createMangaQueryURL,
+	createMangaURLByUUID,
+	getMangaByUUID,
+	queryManga
+} from "./manga";
 import {
 	type DexAuthorRelationship,
 	DexDataType,
@@ -29,6 +35,9 @@ describe("manga", () => {
 		expect(tqm.search).toBe("?title=Test");
 		expect(lqm.search).toBe("?title=Test&limit=10");
 		expect(decodeURIComponent(oqm.search)).toBe("?title=Test&order[year]=desc")
+
+		const am = createMangaAggregateURL({ uuid: DEFAULT_MANGA_UUID });
+
 	});
 	it("should get a manga by uuid", async () => {
 		const manga = await getMangaByUUID({ uuid: DEFAULT_MANGA_UUID, includes: DEFAULT_INCLUDES });

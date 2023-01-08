@@ -1,8 +1,12 @@
-import type { DexMangaCollection, DexMangaEntity, DexMangaQueryParameters } from "@dexutils/typings";
+import type {
+	DexMangaCollection,
+	DexMangaEntity,
+	DexMangaQueryParameters,
+	MangaAggregateParameters,
+	MangaByUUIDParameters
+} from "@dexutils/typings";
 import { MANGADEX_API_URL } from "./constants";
 import { encodeParams } from "./utils";
-
-type MangaByUUIDParameters = { uuid: string; includes?: DexMangaQueryParameters["includes"]; };
 
 export async function getMangaByUUID({ uuid, includes }: MangaByUUIDParameters): Promise<DexMangaEntity> {
 	const url = createMangaURLByUUID({ uuid, includes });
@@ -25,5 +29,19 @@ export function createMangaURLByUUID({ uuid, includes }: MangaByUUIDParameters):
 export function createMangaQueryURL(query: DexMangaQueryParameters): URL {
 	const url = new URL(`${MANGADEX_API_URL}/manga`);
 	Object.entries(query).forEach(([key, value]) => encodeParams(url.searchParams, key, value));
+	return url;
+}
+
+export function createMangaAggregateURL({ uuid, groups, translatedLanguage }: MangaAggregateParameters): URL {
+	const url = new URL(`${MANGADEX_API_URL}/manga/${uuid}/aggregate`);
+
+	if (groups != undefined) {
+		encodeParams(url.searchParams, "groups[]", groups);
+	}
+
+	if (translatedLanguage != undefined) {
+		encodeParams(url.searchParams, "translatedLanguage[]", translatedLanguage);
+	}
+
 	return url;
 }

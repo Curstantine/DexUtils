@@ -168,3 +168,14 @@ export interface DexMangaQueryParameters extends DexBasicQueryParameters {
 	hasAvailableChapters?: boolean;
 	group?: UUID;
 }
+
+export interface MangaByUUIDParameters{
+	uuid: string;
+	includes: DexMangaQueryParameters["includes"];
+};
+
+export interface MangaAggregateParameters {
+	uuid: UUID;
+	groups: UUID[];
+	translatedLanguage: DexLocale[];
+};
