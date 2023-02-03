@@ -42,7 +42,7 @@ export enum DexLocale {
 	"Dutch" = "nl",
 	"Esperanto" = "eo",
 	"Estonian" = "et",
-	"Filipino" = "fil",
+	"Filipino" = "tl",
 	"Finnish" = "fi",
 	"French" = "fr",
 	"German" = "de",
