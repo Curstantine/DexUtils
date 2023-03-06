@@ -3,12 +3,17 @@
  */
 export const encodeParams = (params: URLSearchParams, key: string, value: unknown) => {
 	if (Array.isArray(value)) {
-		if (!key.endsWith("[]") && value.length === 2) {
+		const isArrayedValue = key.endsWith("[]");
+
+		if (!isArrayedValue && value.length === 2) {
 			return params.set(`${key}[${value[0]}]`, encodeValue(value[1]));
 		}
 
-		const arrayedKey = key.endsWith("[]") ? key : `${key}[]`;
-		return value.forEach((val) => params.append(arrayedKey, encodeValue(val)));
+		if (isArrayedValue) {
+			return value.forEach((val) => params.append(key, encodeValue(val)));
+		}
+		
+		throw new Error(`Cannot encode array with key ${key}`);
 	}
 
 	if (typeof value === "object" && value !== null) {

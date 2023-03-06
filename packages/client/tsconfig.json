@@ -1,20 +1,12 @@
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
-		"outDir": "./dist/",
+		"lib": ["dom"],
+		"outDir": "dist",
 		"paths": {
-			"~/*": [
-				"src/*"
-			]
-		},
-		"lib": [
-			"dom"
-		]
+			"~/*": ["src/*"]
+		}
 	},
-	"include": [
-		"./**/*.ts"
-	],
-	"exclude": [
-		"./**/*.test.ts"
-	]
+	"include": ["./**/*.ts"],
+	"exclude": ["./**/*.test.ts", "dist"]
 }

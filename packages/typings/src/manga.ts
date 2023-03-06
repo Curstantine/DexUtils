@@ -146,36 +146,36 @@ export enum DexMangaRelationType {
 }
 
 export interface DexMangaQueryParameters extends DexBasicQueryParameters {
-	ids?: UUID[];
-	title?: string;
-	authorOrArtist?: UUID;
-	authors?: UUID[];
-	artists?: UUID[];
-	year?: number;
-	includedTags?: UUID[];
-	includedTagsMode?: DexCondition;
-	excludedTags?: UUID[];
-	excludedTagsMode?: DexCondition;
-	status?: DexMangaStatus[];
-	originalLanguage?: DexLocale[];
-	excludedOriginalLanguage?: DexLocale[];
-	availableTranslatedLanguage?: DexLocale[];
-	publicationDemographic?: DexMangaPublicationDemographic[];
-	contentRating?: DexMangaContentRating[];
-	createdAtSince?: Date;
-	updatedAtSince?: Date;
-	order?: [DexMangaOrder, DexOrderDirection];
-	hasAvailableChapters?: boolean;
-	group?: UUID;
+    "ids[]"?: UUID[];
+    title?: string;
+    authorOrArtist?: UUID;
+    "authors[]"?: UUID[];
+    "artists[]"?: UUID[];
+    year?: number;
+    "includedTags[]"?: UUID[];
+    includedTagsMode?: DexCondition;
+    "excludedTags[]"?: UUID[];
+    excludedTagsMode?: DexCondition;
+    status?: DexMangaStatus[];
+    "originalLanguage[]"?: DexLocale[];
+    "excludedOriginalLanguage[]"?: DexLocale[];
+    "availableTranslatedLanguage[]"?: DexLocale[];
+    "publicationDemographic[]"?: DexMangaPublicationDemographic[];
+    "contentRating[]"?: DexMangaContentRating[];
+    createdAtSince?: Date;
+    updatedAtSince?: Date;
+    order?: [DexMangaOrder, DexOrderDirection];
+    hasAvailableChapters?: boolean;
+    group?: UUID;
 }
 
 export interface MangaByUUIDParameters{
 	uuid: string;
-	includes: DexMangaQueryParameters["includes"];
-};
+	"includes[]"?: DexDataType[];
+}
 
 export interface MangaAggregateParameters {
 	uuid: UUID;
-	groups: UUID[];
-	translatedLanguage: DexLocale[];
-};
+	"groups[]"?: UUID[];
+	"translatedLanguage[]"?: DexLocale[];
+}
