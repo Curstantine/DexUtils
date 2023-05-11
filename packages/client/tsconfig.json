@@ -1,12 +1,15 @@
 {
-	"extends": "../../tsconfig.base.json",
+	"extends": "@tsconfig/recommended/tsconfig.json",
 	"compilerOptions": {
-		"lib": ["dom"],
+		"baseUrl": ".",
 		"outDir": "dist",
-		"paths": {
-			"~/*": ["src/*"]
-		}
+		"declaration": true,
+		"emitDeclarationOnly": true,
 	},
-	"include": ["./**/*.ts"],
-	"exclude": ["./**/*.test.ts", "dist"]
+	"include": [
+		"src/**/*.ts",
+	],
+	"exclude": [
+		"dist",
+	]
 }

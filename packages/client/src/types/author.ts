@@ -1,11 +1,11 @@
-import type { DexLocalizedString } from "./lang";
+import type { DexLocalizedString } from "./lang.js";
 import type {
 	DexCompleteRelationship,
 	DexDataBody,
 	DexDataType,
 	DexResponseCollection,
 	DexResponseEntity,
-} from "./common";
+} from "./common.js";
 
 export type DexAuthorBody = DexDataBody<DexAuthorAttributes>;
 export type DexAuthorEntity = DexResponseEntity<DexAuthorBody>;

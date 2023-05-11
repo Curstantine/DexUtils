@@ -1,2 +1,1 @@
-export * from "./manga";
-export * from "./utils";
+export * from "./manga.js";

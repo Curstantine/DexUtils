@@ -1,4 +1,4 @@
-import type { DexLocale, DexLocalizedString } from "./lang";
+import type { DexLocale, DexLocalizedString } from "./lang.js";
 import type {
 	DexBasicQueryParameters,
 	DexBasicRelationship,
@@ -10,7 +10,7 @@ import type {
 	DexResponseCollection,
 	DexResponseEntity,
 	UUID,
-} from "./common";
+} from "./common.js";
 
 export type DexMangaBody = DexDataBody<DexMangaAttributes>;
 export type DexMangaEntity = DexResponseEntity<DexMangaBody>;
@@ -146,36 +146,49 @@ export enum DexMangaRelationType {
 }
 
 export interface DexMangaQueryParameters extends DexBasicQueryParameters {
-    "ids[]"?: UUID[];
-    title?: string;
-    authorOrArtist?: UUID;
-    "authors[]"?: UUID[];
-    "artists[]"?: UUID[];
-    year?: number;
-    "includedTags[]"?: UUID[];
-    includedTagsMode?: DexCondition;
-    "excludedTags[]"?: UUID[];
-    excludedTagsMode?: DexCondition;
-    status?: DexMangaStatus[];
-    "originalLanguage[]"?: DexLocale[];
-    "excludedOriginalLanguage[]"?: DexLocale[];
-    "availableTranslatedLanguage[]"?: DexLocale[];
-    "publicationDemographic[]"?: DexMangaPublicationDemographic[];
-    "contentRating[]"?: DexMangaContentRating[];
-    createdAtSince?: Date;
-    updatedAtSince?: Date;
-    order?: [DexMangaOrder, DexOrderDirection];
-    hasAvailableChapters?: boolean;
-    group?: UUID;
+	/// Use square brackets
+	ids?: UUID[];
+	title?: string;
+	authorOrArtist?: UUID;
+	/// Use square brackets
+	authors?: UUID[];
+	/// Use square brackets
+	artists?: UUID[];
+	year?: number;
+	/// Use square brackets
+	includedTags?: UUID[];
+	includedTagsMode?: DexCondition;
+	/// Use square brackets
+	excludedTags?: UUID[];
+	excludedTagsMode?: DexCondition;
+	status?: DexMangaStatus[];
+	/// Use square brackets
+	originalLanguage?: DexLocale[];
+	/// Use square brackets
+	excludedOriginalLanguage?: DexLocale[];
+	/// Use square brackets
+	availableTranslatedLanguage?: DexLocale[];
+	/// Use square brackets
+	publicationDemographic?: DexMangaPublicationDemographic[];
+	/// Use square brackets
+	contentRating?: DexMangaContentRating[];
+	createdAtSince?: Date;
+	updatedAtSince?: Date;
+	order?: [DexMangaOrder, DexOrderDirection];
+	hasAvailableChapters?: boolean;
+	group?: UUID;
 }
 
-export interface MangaByUUIDParameters{
+export interface MangaByUUIDParameters {
 	uuid: string;
-	"includes[]"?: DexDataType[];
+	/// Use square brackets
+	includes?: DexDataType[];
 }
 
 export interface MangaAggregateParameters {
 	uuid: UUID;
-	"groups[]"?: UUID[];
-	"translatedLanguage[]"?: DexLocale[];
+	/// Use square brackets
+	groups?: UUID[];
+	/// Use square brackets
+	translatedLanguage?: DexLocale[];
 }

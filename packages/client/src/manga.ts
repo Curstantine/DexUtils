@@ -3,13 +3,13 @@ import type {
 	DexMangaEntity,
 	DexMangaQueryParameters,
 	MangaAggregateParameters,
-	MangaByUUIDParameters
-} from "@dexutils/typings";
-import { MANGADEX_API_URL } from "./constants";
-import { encodeParams } from "./utils";
+	MangaByUUIDParameters,
+} from "./types/manga.js";
+import { MANGADEX_API_URL } from "./constants.js";
+import { encodeParams } from "./utils.js";
 
-export async function getMangaByUUID({ uuid, includes }: MangaByUUIDParameters): Promise<DexMangaEntity> {
-	const url = createMangaURLByUUID({ uuid, includes });
+export async function getMangaByUUID(params: MangaByUUIDParameters): Promise<DexMangaEntity> {
+	const url = createMangaURLByUUID(params);
 	const request = await fetch(url, { method: "GET" });
 	return (await request.json()) as DexMangaEntity;
 }
