@@ -10,8 +10,8 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "@dexutils/client": "*",
-    "@dexutils/typings": "*",
+    "@dexutils/client": "workspace:^",
+    "@dexutils/typings": "workspace:^",
     "svelte-spa-router": "^3.3.0"
   },
   "devDependencies": {

@@ -4,14 +4,15 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "rimraf dist && yarn run build:types && yarn run build:esm",
+		"postinstall": "pnpm build",
+		"build": "rimraf dist && pnpm run build:types && pnpm run build:esm",
 		"build:esm": "esbuild src/index.ts --bundle --platform=node --target=es2021 --format=esm --outfile=dist/index.js",
 		"build:types": "tsc --emitDeclarationOnly --outDir dist",
 		"typecheck": "tsc",
 		"lint": "eslint .",
-		"lint:fix": "yarn lint:fix",
+		"lint:fix": "pnpm lint:fix",
 		"test": "jest",
-		"test:watch": "yarn test -- --watch"
+		"test:watch": "pnpm test -- --watch"
 	},
 	"devDependencies": {
 		"@dexutils/eslint-config": "*",
