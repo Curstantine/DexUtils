@@ -174,7 +174,7 @@ export interface DexMangaQueryParameters extends DexBasicQueryParameters {
 	contentRating?: DexMangaContentRating[];
 	createdAtSince?: Date;
 	updatedAtSince?: Date;
-	order?: [DexMangaOrder, DexOrderDirection];
+	order?: Partial<Record<DexMangaOrder, DexOrderDirection>>;
 	hasAvailableChapters?: boolean;
 	group?: UUID;
 }

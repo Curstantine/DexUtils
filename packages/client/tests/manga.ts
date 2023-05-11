@@ -13,7 +13,9 @@ import {
 
 const DEFAULT_MANGA_UUID = "f9c33607-9180-4ba6-b85c-e4b5faee7192";
 const DEFAULT_INCLUDES = [DexDataType.Artist, DexDataType.Author];
-const DEFAULT_ORDER: [DexMangaOrder, DexOrderDirection] = [DexMangaOrder.Year, DexOrderDirection.Descending];
+const DEFAULT_ORDER = {
+	[DexMangaOrder.Year]: DexOrderDirection.Descending,
+};
 
 test("should create the right url", () => {
 	const um = createMangaURLByUUID({ uuid: DEFAULT_MANGA_UUID });
@@ -64,7 +66,6 @@ test("should query manga ids and handle sorting", async () => {
 		order: DEFAULT_ORDER,
 		includes: DEFAULT_INCLUDES,
 	});
-	console.log(manga);
 	const first = manga.data[0];
 	const last = manga.data[manga.data.length - 1];
 

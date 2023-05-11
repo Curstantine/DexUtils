@@ -6,7 +6,7 @@ import type {
 	MangaByUUIDParameters,
 } from "./types/manga.js";
 import { MANGADEX_API_URL } from "./constants.js";
-import { encodeParams } from "./utils.js";
+import { encodeParams, encodeParam } from "./utils.js";
 
 export async function getMangaByUUID(params: MangaByUUIDParameters): Promise<DexMangaEntity> {
 	const url = createMangaURLByUUID(params);
@@ -22,13 +22,13 @@ export async function queryManga(query: DexMangaQueryParameters): Promise<DexMan
 
 export function createMangaURLByUUID({ uuid, includes }: MangaByUUIDParameters): URL {
 	const url = new URL(`${MANGADEX_API_URL}/manga/${uuid}`);
-	if (includes != undefined) encodeParams(url.searchParams, "includes[]", includes);
+	if (includes != undefined) encodeParam(url.searchParams, "includes[]", includes);
 	return url;
 }
 
 export function createMangaQueryURL(query: DexMangaQueryParameters): URL {
 	const url = new URL(`${MANGADEX_API_URL}/manga`);
-	Object.entries(query).forEach(([key, value]) => encodeParams(url.searchParams, key, value));
+	encodeParams(url.searchParams, query as Record<string, unknown>);
 	return url;
 }
 
@@ -36,11 +36,11 @@ export function createMangaAggregateURL({ uuid, groups, translatedLanguage }: Ma
 	const url = new URL(`${MANGADEX_API_URL}/manga/${uuid}/aggregate`);
 
 	if (groups != undefined) {
-		encodeParams(url.searchParams, "groups[]", groups);
+		encodeParam(url.searchParams, "groups[]", groups);
 	}
 
 	if (translatedLanguage != undefined) {
-		encodeParams(url.searchParams, "translatedLanguage[]", translatedLanguage);
+		encodeParam(url.searchParams, "translatedLanguage[]", translatedLanguage);
 	}
 
 	return url;
