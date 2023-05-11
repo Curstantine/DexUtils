@@ -13,23 +13,11 @@
 			"path": "apps/web-docs"
 		},
 		{
-			"name": "jest-config",
-			"path": "packages/jest-config"
-		},
-		{
-			"name": "eslint-config",
-			"path": "packages/eslint-config"
-		},
-		{
 			"name": "root",
 			"path": "."
 		}
 	],
 	"settings": {
-		"jest.autoRun": {
-			"watch": false
-		},
-		"jest.disabledWorkspaceFolders": ["typings", "jest-config", "eslint-config", "web-docs", "root"],
 		"cSpell.words": [
 			"dexutils",
 			"MANGADEX"

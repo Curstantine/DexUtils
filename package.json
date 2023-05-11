@@ -1,21 +1,6 @@
 {
 	"name": "dexutils",
 	"private": true,
-	"workspaces": [
-		"packages/*",
-		"apps/*"
-	],
-	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev --parallel",
-		"lint": "turbo run lint",
-		"lint:fix": "turbo run lint:fix",
-		"test": "turbo run test --parallel",
-		"typecheck": "turbo run typecheck"
-	},
-	"dependencies": {
-		"turbo": "^1.6.3"
-	},
 	"engines": {
 		"npm": ">=7.0.0",
 		"node": ">=14.0.0"
