@@ -27,6 +27,7 @@ export interface DexMangaAttributes {
 	title: DexLocalizedString;
 	altTitles: DexLocalizedString[];
 	description: DexLocalizedString;
+	isLocked: boolean;
 	links: Partial<DexMangaLinks>;
 	originalLanguage: DexLocale;
 	lastVolume: string | null;
@@ -35,15 +36,15 @@ export interface DexMangaAttributes {
 	status: DexMangaStatus;
 	year: number | null;
 	contentRating: DexMangaContentRating;
-	tags: DexMangaTagBody[];
-	state: DexMangaState;
 	chapterNumbersResetOnNewVolume: boolean;
-	createdAt: Date;
-	updatedAt: Date;
-	version: number;
 	availableTranslatedLanguages: DexLocale[];
 	/// UUID of the latest chapter that was uploaded. (disregards locales)
 	latestUploadedChapter: string;
+	tags: DexMangaTagBody[];
+	state: DexMangaState;
+	version: number;
+	createdAt: Date;
+	updatedAt: Date;
 }
 
 export interface DexMangaTagAttributes {
@@ -146,8 +147,6 @@ export enum DexMangaRelationType {
 }
 
 export interface DexMangaQueryParameters extends DexBasicQueryParameters {
-	/// Use square brackets
-	ids?: UUID[];
 	title?: string;
 	authorOrArtist?: UUID;
 	/// Use square brackets
@@ -170,6 +169,8 @@ export interface DexMangaQueryParameters extends DexBasicQueryParameters {
 	availableTranslatedLanguage?: DexLocale[];
 	/// Use square brackets
 	publicationDemographic?: DexMangaPublicationDemographic[];
+	/// Use square brackets
+	ids?: UUID[];
 	/// Use square brackets
 	contentRating?: DexMangaContentRating[];
 	createdAtSince?: Date;
