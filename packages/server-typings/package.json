@@ -1,0 +1,23 @@
+{
+	"name": "@dexutils/server-typings",
+	"version": "0.1.0",
+	"description": "TypeScript typings for MangaDex API",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc"
+	},
+	"keywords": [
+		"MangaDex",
+		"API",
+		"Typings"
+	],
+	"author": "Curstantine",
+	"license": "MIT",
+	"devDependencies": {
+		"@tsconfig/recommended": "^1.0.2",
+		"prettier": "^3.0.0",
+		"typescript": "^5.1.6"
+	}
+}

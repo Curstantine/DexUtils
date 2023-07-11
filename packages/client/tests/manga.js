@@ -2,14 +2,7 @@ import { test } from "uvu";
 import * as assert from "uvu/assert";
 
 import { createMangaQueryURL, createMangaURLByUUID, getMangaByUUID, queryManga } from "../src/manga.js";
-import {
-	DexAuthorRelationship,
-	DexDataType,
-	DexLocale,
-	DexMangaOrder,
-	DexOrderDirection,
-	DexResponseType,
-} from "../src/types/index.js";
+import { DexDataType, DexLocale, DexMangaOrder, DexOrderDirection, DexResponseType } from "@dexutils/server-typings";
 
 const DEFAULT_MANGA_UUID = "f9c33607-9180-4ba6-b85c-e4b5faee7192";
 const DEFAULT_INCLUDES = [DexDataType.Artist, DexDataType.Author];
@@ -49,8 +42,14 @@ test("should get a manga by uuid", async () => {
 		uuid: DEFAULT_MANGA_UUID,
 		includes: DEFAULT_INCLUDES,
 	});
-	const artists = manga.data.relationships?.filter((r) => r.type === DexDataType.Artist) as DexAuthorRelationship[];
-	const authors = manga.data.relationships?.filter((r) => r.type === DexDataType.Author) as DexAuthorRelationship[];
+
+	/** @type {import("@dexutils/server-typings").DexAuthorRelationship} */
+	// @ts-expect-error
+	const artists = manga.data.relationships?.filter((r) => r.type === DexDataType.Artist);
+
+	/** @type {import("@dexutils/server-typings").DexAuthorRelationship} */
+	// @ts-expect-error
+	const authors = manga.data.relationships?.filter((r) => r.type === DexDataType.Author);
 
 	assert.equal(manga.response, DexResponseType.Entity);
 	assert.equal(manga.data.id, DEFAULT_MANGA_UUID);
@@ -74,10 +73,15 @@ test("should query manga ids and handle sorting", async () => {
 	assert.equal(manga.limit, 5);
 	assert.equal(manga.data.length, 5);
 	assert.ok(first.attributes.year);
-	assert.ok(first.attributes.year! >= last.attributes.year!);
+	assert.ok(first.attributes.year >= last.attributes.year);
 
-	const artists = first.relationships?.filter((r) => r.type === DexDataType.Artist) as DexAuthorRelationship[];
-	const authors = first.relationships?.filter((r) => r.type === DexDataType.Author) as DexAuthorRelationship[];
+	/** @type {import("@dexutils/server-typings").DexAuthorRelationship} */
+	// @ts-expect-error
+	const artists = first.relationships?.filter((r) => r.type === DexDataType.Artist);
+
+	/** @type {import("@dexutils/server-typings").DexAuthorRelationship} */
+	// @ts-expect-error
+	const authors = first.relationships?.filter((r) => r.type === DexDataType.Author);
 
 	assert.ok(artists[0].attributes);
 	assert.ok(authors[0].attributes);

@@ -1,14 +1,11 @@
 {
     "extends": "../tsconfig.json",
-    "compilerOptions": {
-        "declaration": false,
-        "emitDeclarationOnly": false,
-    },
     "include": [
-        "**/*.ts"
+        "."
     ],
-    "exclude": [
-        "node_modules",
-        "dist"
-    ]
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "noEmit": true,
+    }
 }

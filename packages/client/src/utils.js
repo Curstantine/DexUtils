@@ -3,9 +3,15 @@
  *
  * NOTE: This is a side-effect function, it will mutate the given params object.
  *
+ * @param {URLSearchParams} params
+ * @param {Record<string, unknown>} values
+ * @param {string[]} ignore
+ *
+ * @returns {void}
+ *
  * @sse {@link encodeParam} for more information on how the params are encoded.
  */
-export const encodeParams = (params: URLSearchParams, values: Record<string, unknown>, ignore: string[] = []): void => {
+export const encodeParams = (params, values, ignore = []) => {
 	Object.entries(values)
 		.filter(([key]) => !ignore.includes(key))
 		.forEach(([key, value]) => encodeParam(params, key, value));
@@ -26,16 +32,22 @@ export const encodeParams = (params: URLSearchParams, values: Record<string, unk
  *
  * For everything else, the value will be encoded according to {@link encodeValue}.
  * For an example, the key `foo` with a value of `bar` will be encoded as `foo=bar`.
+ *
+ * @param {URLSearchParams} params
+ * @param {string} key
+ * @param {unknown} value
+ *
+ * @returns {void}
  */
-export const encodeParam = (params: URLSearchParams, key: string, value: unknown) => {
+export const encodeParam = (params, key, value) => {
 	if (Array.isArray(value)) {
 		const appendedKey = key.endsWith("[]") ? key : `${key}[]`;
 		return value.forEach((val) => params.append(appendedKey, encodeValue(val)));
 	}
 
 	if (typeof value === "object" && value !== null) {
-		const first = Object.keys(value as object)[0];
-		return params.set(`${key}[${first}]`, encodeValue((value as Record<string, unknown>)[first]));
+		const first = Object.keys(value)[0];
+		return params.set(`${key}[${first}]`, encodeValue(value[first]));
 	}
 
 	return params.set(key, encodeValue(value));
@@ -48,9 +60,11 @@ export const encodeParam = (params: URLSearchParams, key: string, value: unknown
  * - Date -> ISO String
  * - String | Number -> String
  *
+ * @param {unknown} value
+ * @returns {string}
  * @throws if the value is not supported.
  */
-export const encodeValue = (value: unknown): string => {
+export const encodeValue = (value) => {
 	if (value instanceof Date) {
 		return value.toISOString();
 	}

@@ -1,26 +1,28 @@
 {
 	"name": "@dexutils/client",
 	"version": "0.0.1",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"type": "module",
+	"main": "src/index.js",
+	"module": "src/index.js",
 	"scripts": {
-		"build": "rimraf dist && pnpm run build:types && pnpm run build:esm",
-		"build:esm": "esbuild src/index.ts --bundle --tsconfig=tsconfig.json --outfile=dist/index.js",
-		"build:types": "tsc --outDir dist",
-		"typecheck": "tsc",
-		"test": "loadr -- uvu --tsconfig ./tests/tsconfig.json tests"
+		"build:types": "tsc",
+		"test": "uvu tests"
+	},
+	"exports": {
+		"./package.json": "./package.json",
+		"./manga": {
+			"types": "./types/manga.d.ts",
+			"default": "./src/manga.js"
+		}
 	},
 	"dependencies": {
-		"form-data": "^4.0.0"
+		"form-data": "^4.0.0",
+		"@dexutils/server-typings": "workspace:*"
 	},
 	"devDependencies": {
 		"@tsconfig/recommended": "^1.0.2",
 		"@types/node": "^18.11.9",
-		"esbuild": "^0.15.15",
-		"esbuild-runner": "^2.2.2",
-		"loadr": "^0.1.1",
 		"rimraf": "^4.1.2",
-		"tsm": "^2.3.0",
 		"typescript": "^4.9.3",
 		"uvu": "^0.5.6"
 	}
