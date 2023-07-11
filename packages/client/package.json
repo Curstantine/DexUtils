@@ -4,15 +4,16 @@
 	"type": "module",
 	"main": "src/index.js",
 	"module": "src/index.js",
+	"types": "types/index.d.ts",
 	"scripts": {
 		"build:types": "tsc",
 		"test": "uvu tests"
 	},
 	"exports": {
 		"./package.json": "./package.json",
-		"./manga": {
-			"types": "./types/manga.d.ts",
-			"default": "./src/manga.js"
+		".": {
+			"types": "./types/index.d.ts",
+			"default": "./src/index.js"
 		}
 	},
 	"dependencies": {
